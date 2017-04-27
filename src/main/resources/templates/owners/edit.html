@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'owners', #{title.owner.edit})}">
+
+<body>
+
+<h2 th:text="#{general.edit}">Edit</h2>
+<div class="row">
+    <div class="col-md-12">
+        <form th:object="${owner}" class="form-horizontal" method="post">
+            <div class="form-group has-feedback">
+                <input th:replace="~{fragments/inputField :: input (#{owner.first_name}, 'firstName')}"/>
+                <input th:replace="~{fragments/inputField :: input (#{owner.last_name}, 'lastName')}"/>
+                <input th:replace="~{fragments/inputField :: input (#{general.address.city}, 'address.city')}"/>
+                <input th:replace="~{fragments/inputField :: input (#{general.address.country}, 'address.country')}"/>
+                <input th:replace="~{fragments/inputField :: input (#{general.address.postcode}, 'address.postcode')}"/>
+                <input th:replace="~{fragments/inputField :: input (#{general.contact.telephone}, 'contact.telephone')}"/>
+                <input th:replace="~{fragments/inputField :: input (#{general.contact.mobilePhone}, 'contact.mobilePhone')}"/>
+                <input th:replace="~{fragments/inputField :: input (#{general.contact.email}, 'contact.emailAddress')}"/>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="hidden" name="id" th:value="*{id}"/>
+                    <button class="btn btn-default" type="submit" th:text="#{general.buttons.edit}"></button>
+                </div>
+            </div>
+        </form>
+        <div th:replace="~{fragments/navigation :: back(@{/clinics/__${clinic.id}__/owners})}"/>
+    </div>
+</div>
+
+</body>
+
+</html>

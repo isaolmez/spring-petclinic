@@ -1,0 +1,13 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<th:block th:fragment="back (backUrl)">
+    <a class="button" th:href="@{__${backUrl}__}"><span th:text="#{general.back}"/></a>
+</th:block>
+
+<th:block th:fragment="edit (backUrl, editUrl)">
+    <a class="button" th:href="@{__${backUrl}__}"><span th:text="#{general.back}"/></a>
+    <a class="button" th:href="@{__${editUrl}__}"><span th:text="#{general.edit}"/></a>
+</th:block>
+
+</body>
+</html>

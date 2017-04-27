@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'vets', #{title.vet.list})}">
+
+<body>
+
+<h2 th:text="#{vet.list}">List</h2>
+<div class="row">
+    <div class="col-md-12">
+        <a th:href="@{/clinics/__${clinic.id}__/vets/create}"><span th:text="#{general.create}"/></a>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td th:text="#{vet.id}"></td>
+                <td th:text="#{vet.first_name}"></td>
+                <td th:text="#{vet.last_name}"></td>
+                <td th:text="#{general.address.address}"></td>
+                <td th:text="#{general.address.city}"></td>
+                <td th:text="#{general.address.country}"></td>
+                <td th:text="#{general.address.postcode}"></td>
+                <td th:text="#{general.contact.telephone}"></td>
+                <td th:text="#{general.contact.mobilePhone}"></td>
+                <td th:text="#{general.contact.email}"></td>
+                <td th:text="#{general.details}"></td>
+                <td th:text="#{general.edit}"></td>
+                <td th:text="#{general.delete}"></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="veterinarian : ${veterinarians}" th:object="${veterinarian}">
+                <td th:text="*{id}"></td>
+                <td th:text="*{firstName}"></td>
+                <td th:text="*{lastName}"></td>
+                <td th:text="*{address.address}"></td>
+                <td th:text="*{address.city}"></td>
+                <td th:text="*{address.country}"></td>
+                <td th:text="*{address.postcode}"></td>
+                <td th:text="*{contact.telephone}"></td>
+                <td th:text="*{contact.mobilePhone}"></td>
+                <td th:text="*{contact.emailAddress}"></td>
+                <td><a th:href="@{/clinics/__${clinic.id}__/vets/__${veterinarian.id}__/details}"><span th:text="#{general.details}"/></a></td>
+                <td><a th:href="@{/clinics/__${clinic.id}__/vets/__${veterinarian.id}__/edit}"><span th:text="#{general.edit}"/></a></td>
+                <td><a th:href="@{/clinics/__${clinic.id}__/vets/__${veterinarian.id}__/delete}"><span th:text="#{general.delete}"/></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+
+</html>

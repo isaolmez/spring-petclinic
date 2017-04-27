@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'owners', #{title.owner.details})}">
+
+<body>
+
+<h2 th:text="#{general.details}">Details</h2>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td th:text="#{owner.id}"></td>
+                <td th:text="#{owner.first_name}"></td>
+                <td th:text="#{owner.last_name}"></td>
+                <td th:text="#{general.address.address}"></td>
+                <td th:text="#{general.address.city}"></td>
+                <td th:text="#{general.address.country}"></td>
+                <td th:text="#{general.address.postcode}"></td>
+                <td th:text="#{general.contact.telephone}"></td>
+                <td th:text="#{general.contact.mobilePhone}"></td>
+                <td th:text="#{general.contact.email}"></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:object="${owner}">
+                <td th:text="*{id}"></td>
+                <td th:text="*{firstName}"></td>
+                <td th:text="*{lastName}"></td>
+                <td th:text="*{address.address}"></td>
+                <td th:text="*{address.city}"></td>
+                <td th:text="*{address.country}"></td>
+                <td th:text="*{address.postcode}"></td>
+                <td th:text="*{contact.telephone}"></td>
+                <td th:text="*{contact.mobilePhone}"></td>
+                <td th:text="*{contact.emailAddress}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div th:replace="~{fragments/navigation :: edit(@{/clinics/__${clinic.id}__/owners}, @{/clinics/__${clinic.id}__/owners/__${owner.id}__/edit})}"/>
+    </div>
+</div>
+
+</body>
+
+</html>

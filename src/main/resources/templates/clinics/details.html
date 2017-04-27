@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'clinics', #{title.clinic.details})}">
+
+<body>
+
+<h2 th:text="#{general.details}">Details</h2>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td th:text="#{clinic.id}"></td>
+                <td th:text="#{clinic.name}"></td>
+                <td th:text="#{general.address.address}"></td>
+                <td th:text="#{general.address.city}"></td>
+                <td th:text="#{general.address.country}"></td>
+                <td th:text="#{general.address.postcode}"></td>
+                <td th:text="#{general.contact.telephone}"></td>
+                <td th:text="#{general.contact.mobilePhone}"></td>
+                <td th:text="#{general.contact.email}"></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:object="${clinic}">
+                <td th:text="*{id}"></td>
+                <td th:text="*{name}"></td>
+                <td th:text="*{address.address}"></td>
+                <td th:text="*{address.city}"></td>
+                <td th:text="*{address.country}"></td>
+                <td th:text="*{address.postcode}"></td>
+                <td th:text="*{contact.telephone}"></td>
+                <td th:text="*{contact.mobilePhone}"></td>
+                <td th:text="*{contact.emailAddress}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div th:replace="~{fragments/navigation :: edit(@{/clinics}, @{/clinics/__${clinic.id}__/edit})}"/>
+    </div>
+</div>
+
+</body>
+
+</html>
