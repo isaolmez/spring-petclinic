@@ -52,7 +52,7 @@ public class Pet extends NamedEntity {
     }
 
     public Set<Visit> getVisits() {
-        return Collections.unmodifiableSet(getVisits());
+        return Collections.unmodifiableSet(getVisitsInternal());
     }
 
     public void setVisits(Set<Visit> visits) {

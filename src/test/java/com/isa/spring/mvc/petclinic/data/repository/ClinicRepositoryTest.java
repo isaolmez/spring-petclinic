@@ -1,6 +1,5 @@
 package com.isa.spring.mvc.petclinic.data.repository;
 
-import com.google.common.collect.Sets;
 import com.isa.spring.mvc.petclinic.common.provider.ClinicModelProvider;
 import com.isa.spring.mvc.petclinic.common.provider.OwnerModelProvider;
 import com.isa.spring.mvc.petclinic.common.provider.VeterinarianModelProvider;
@@ -12,12 +11,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
-
-import java.util.Set;
 
 import static org.junit.Assert.*;
 

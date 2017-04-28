@@ -3,6 +3,8 @@ package com.isa.spring.mvc.petclinic.data.model;
 import com.isa.spring.mvc.petclinic.data.model.core.NamedEntity;
 
 import javax.persistence.*;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,11 +14,16 @@ public class Specialty extends NamedEntity {
     private Set<Veterinarian> veterinarians;
 
     public Set<Veterinarian> getVeterinarians() {
-        return veterinarians;
+        return Collections.unmodifiableSet(getVeterinariansInternal());
     }
 
     public void setVeterinarians(Set<Veterinarian> veterinarians) {
         this.veterinarians = veterinarians;
+    }
+
+    public void addVeterinarian(Veterinarian veterinarian) {
+        this.getVeterinariansInternal().add(veterinarian);
+        veterinarian.getSpecialtiesInternal().add(this);
     }
 
     public void removeVeterinarians() {
@@ -26,7 +33,15 @@ public class Specialty extends NamedEntity {
     }
 
     public void removeVeterinarian(Veterinarian veterinarian) {
-        this.getVeterinarians().remove(veterinarian);
-        veterinarian.getSpecialties().remove(this);
+        this.getVeterinariansInternal().remove(veterinarian);
+        veterinarian.getSpecialtiesInternal().remove(this);
+    }
+
+    Set<Veterinarian> getVeterinariansInternal() {
+        if (this.veterinarians == null) {
+            this.veterinarians = new HashSet<>();
+        }
+
+        return this.veterinarians;
     }
 }

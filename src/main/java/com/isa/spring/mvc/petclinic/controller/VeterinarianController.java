@@ -1,8 +1,10 @@
 package com.isa.spring.mvc.petclinic.controller;
 
 import com.isa.spring.mvc.petclinic.data.model.Clinic;
+import com.isa.spring.mvc.petclinic.data.model.Specialty;
 import com.isa.spring.mvc.petclinic.data.model.Veterinarian;
 import com.isa.spring.mvc.petclinic.data.repository.ClinicRepository;
+import com.isa.spring.mvc.petclinic.data.repository.SpecialtyRepository;
 import com.isa.spring.mvc.petclinic.data.validator.VeterinarianValidator;
 import com.isa.spring.mvc.petclinic.service.VeterinarianService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +24,25 @@ public class VeterinarianController {
 
     private final ClinicRepository clinicRepository;
 
+    private final SpecialtyRepository specialtyRepository;
+
     @Autowired
-    public VeterinarianController(VeterinarianService veterinarianService, ClinicRepository clinicRepository) {
+    public VeterinarianController(VeterinarianService veterinarianService,
+                                  ClinicRepository clinicRepository,
+                                  SpecialtyRepository specialtyRepository) {
         this.veterinarianService = veterinarianService;
         this.clinicRepository = clinicRepository;
+        this.specialtyRepository = specialtyRepository;
     }
 
     @ModelAttribute("clinic")
     public Clinic getClinic(@PathVariable("clinicId") long clinicId) {
         return clinicRepository.findOne(clinicId);
+    }
+
+    @ModelAttribute("specialties")
+    public List<Specialty> getSpecialties(){
+        return specialtyRepository.findAll();
     }
 
     @ModelAttribute("veterinarian")

@@ -5,6 +5,8 @@ import com.isa.spring.mvc.petclinic.data.model.embeddable.Address;
 import com.isa.spring.mvc.petclinic.data.model.embeddable.ContactDetails;
 
 import javax.persistence.*;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -50,11 +52,16 @@ public class Veterinarian extends Person {
     }
 
     public Set<Specialty> getSpecialties() {
-        return specialties;
+        return Collections.unmodifiableSet(getSpecialtiesInternal());
     }
 
     public void setSpecialties(Set<Specialty> specialties) {
         this.specialties = specialties;
+    }
+
+    public void addSpecialty(Specialty specialty) {
+        this.getSpecialtiesInternal().add(specialty);
+        specialty.getVeterinariansInternal().add(this);
     }
 
     public void removeSpecialties() {
@@ -64,7 +71,15 @@ public class Veterinarian extends Person {
     }
 
     public void removeSpecialty(Specialty specialty) {
-        this.getSpecialties().remove(specialty);
-        specialty.getVeterinarians().remove(this);
+        this.getSpecialtiesInternal().remove(specialty);
+        specialty.getVeterinariansInternal().remove(this);
+    }
+
+    Set<Specialty> getSpecialtiesInternal() {
+        if (this.specialties == null) {
+            this.specialties = new HashSet<>();
+        }
+
+        return this.specialties;
     }
 }

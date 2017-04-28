@@ -1,12 +1,12 @@
 package com.isa.spring.mvc.petclinic.controller;
 
+import com.isa.spring.mvc.petclinic.data.formatter.DateFormatter;
 import com.isa.spring.mvc.petclinic.data.model.Owner;
 import com.isa.spring.mvc.petclinic.data.model.Pet;
 import com.isa.spring.mvc.petclinic.data.model.PetType;
 import com.isa.spring.mvc.petclinic.data.repository.PetRepository;
 import com.isa.spring.mvc.petclinic.data.repository.PetTypeRepository;
 import com.isa.spring.mvc.petclinic.service.OwnerService;
-import com.isa.spring.mvc.petclinic.data.formatter.DateFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -28,7 +27,9 @@ public class PetsController {
     private final OwnerService ownerService;
 
     @Autowired
-    public PetsController(PetRepository petRepository, OwnerService ownerService, PetTypeRepository petTypeRepository) {
+    public PetsController(PetRepository petRepository,
+                          OwnerService ownerService,
+                          PetTypeRepository petTypeRepository) {
         this.petRepository = petRepository;
         this.ownerService = ownerService;
         this.petTypeRepository = petTypeRepository;
@@ -50,7 +51,7 @@ public class PetsController {
     }
 
     @ModelAttribute("types")
-    public Collection<PetType> getTypes(){
+    public List<PetType> getTypes(){
         return petTypeRepository.findAll();
     }
 
@@ -69,13 +70,13 @@ public class PetsController {
     }
 
     @PostMapping("/create")
-    public String create(@Valid Pet pet, BindingResult bindingResult) {
+    public String create(@Valid Pet pet, BindingResult bindingResult, @ModelAttribute(binding = false) Owner owner) {
         if (bindingResult.hasErrors()) {
             return "pets/create";
         } else {
+            pet.setOwner(owner);
             petRepository.save(pet);
             return "redirect:/owners/{ownerId}/pets";
         }
     }
-
 }

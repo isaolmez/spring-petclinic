@@ -6,7 +6,6 @@ import com.isa.spring.mvc.petclinic.data.validator.OwnerValidator;
 import com.isa.spring.mvc.petclinic.service.ClinicService;
 import com.isa.spring.mvc.petclinic.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -19,17 +18,14 @@ import java.util.List;
 @Controller
 @RequestMapping("/clinics/{clinicId}/owners")
 public class OwnersController {
-    private ApplicationContext context;
-
     private final OwnerService ownerService;
 
     private final ClinicService clinicService;
 
     @Autowired
-    public OwnersController(OwnerService ownerService, ClinicService clinicService, ApplicationContext context) {
+    public OwnersController(OwnerService ownerService, ClinicService clinicService) {
         this.ownerService = ownerService;
         this.clinicService = clinicService;
-        this.context = context;
     }
 
     @ModelAttribute("clinic")

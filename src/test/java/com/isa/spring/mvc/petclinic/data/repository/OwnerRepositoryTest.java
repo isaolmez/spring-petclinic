@@ -141,7 +141,7 @@ public class OwnerRepositoryTest {
 
         assertNotNull(saved);
         assertTrue(saved.getId() > 0);
-        assertTrue(initialPet.getId() > 0);
+        saved.getPets().forEach(actualPet -> assertTrue(actualPet.getId() > 0));
     }
 
     @Test

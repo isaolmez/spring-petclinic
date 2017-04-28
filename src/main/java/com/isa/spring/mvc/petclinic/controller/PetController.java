@@ -26,7 +26,9 @@ public class PetController {
     private final PetTypeRepository petTypeRepository;
 
     @Autowired
-    public PetController(PetRepository petRepository, OwnerService ownerService, PetTypeRepository petTypeRepository) {
+    public PetController(PetRepository petRepository,
+                         OwnerService ownerService,
+                         PetTypeRepository petTypeRepository) {
         this.petRepository = petRepository;
         this.ownerService = ownerService;
         this.petTypeRepository = petTypeRepository;

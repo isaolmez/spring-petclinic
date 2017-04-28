@@ -1,24 +1,17 @@
 package com.isa.spring.mvc.petclinic.data.repository;
 
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.isa.spring.mvc.petclinic.common.provider.SpecialtyModelProvider;
 import com.isa.spring.mvc.petclinic.common.provider.VeterinarianModelProvider;
-import com.isa.spring.mvc.petclinic.data.model.Specialty;
 import com.isa.spring.mvc.petclinic.data.model.Veterinarian;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -40,7 +33,6 @@ public class VeterinarianRepositoryTest {
     public void setUp() {
         this.veterinarian = VeterinarianModelProvider.INSTANCE.randomModel();
         this.veterinarian.setClinic(clinicRepository.findOne(1L));
-        this.veterinarian.setSpecialties(Sets.newHashSet(specialtyRepository.findOne(29L)));
     }
 
     @Test

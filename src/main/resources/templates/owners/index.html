@@ -25,6 +25,7 @@
                 <td th:text="#{general.details}"></td>
                 <td th:text="#{general.edit}"></td>
                 <td th:text="#{general.delete}"></td>
+                <td th:text="#{pet.list}"></td>
             </tr>
             </thead>
             <tbody>
@@ -42,6 +43,7 @@
                 <td><a th:href="@{/clinics/__${clinic.id}__/owners/__${owner.id}__/details}"><span th:text="#{general.details}"/></a></td>
                 <td><a th:href="@{/clinics/__${clinic.id}__/owners/__${owner.id}__/edit}"><span th:text="#{general.edit}"/></a></td>
                 <td><a th:href="@{/clinics/__${clinic.id}__/owners/__${owner.id}__/delete}"><span th:text="#{general.delete}"/></a></td>
+                <td><a th:href="@{/owners/__${owner.id}__/pets}"><span th:text="#{pet.list}"/></a></td>
             </tr>
             </tbody>
         </table>

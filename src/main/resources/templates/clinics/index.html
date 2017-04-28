@@ -22,6 +22,7 @@
                 <td th:text="#{general.edit}"></td>
                 <td th:text="#{general.delete}"></td>
                 <td th:text="#{owner.list}"></td>
+                <td th:text="#{vet.list}"></td>
             </tr>
             </thead>
             <tbody>
@@ -32,10 +33,11 @@
                 <td th:text="*{address.country}"></td>
                 <td th:text="*{contact.telephone}"></td>
                 <td th:text="*{contact.emailAddress}"></td>
-                <td><a th:href="@{/clinics/details/__${clinic.id}__}"><span th:text="#{general.details}"/></a></td>
-                <td><a th:href="@{/clinics/edit/__${clinic.id}__}"><span th:text="#{general.edit}"/></a></td>
-                <td><a th:href="@{/clinics/delete/__${clinic.id}__}"><span th:text="#{general.delete}"/></a></td>
+                <td><a th:href="@{/clinics/__${clinic.id}__/details}"><span th:text="#{general.details}"/></a></td>
+                <td><a th:href="@{/clinics/__${clinic.id}__/edit}"><span th:text="#{general.edit}"/></a></td>
+                <td><a th:href="@{/clinics/__${clinic.id}__/delete}"><span th:text="#{general.delete}"/></a></td>
                 <td><a th:href="@{/clinics/__${clinic.id}__/owners}"><span th:text="#{owner.list}"/></a></td>
+                <td><a th:href="@{/clinics/__${clinic.id}__/vets}"><span th:text="#{vet.list}"/></a></td>
             </tr>
             </tbody>
         </table>
