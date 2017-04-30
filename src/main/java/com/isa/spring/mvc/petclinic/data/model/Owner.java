@@ -26,6 +26,10 @@ public class Owner extends Person {
     private Set<Pet> pets;
 
     public Address getAddress() {
+        if(address == null){
+            address = new Address();
+        }
+
         return address;
     }
 
@@ -34,6 +38,10 @@ public class Owner extends Person {
     }
 
     public ContactDetails getContact() {
+        if(contact == null){
+            contact = new ContactDetails();
+        }
+
         return contact;
     }
 

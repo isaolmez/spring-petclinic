@@ -41,7 +41,7 @@ public class PetController {
 
     @InitBinder("pet")
     public void setFormatters(WebDataBinder webDataBinder) {
-        webDataBinder.addCustomFormatter(new DateFormatter("dd-MM-yyyy"));
+        webDataBinder.addCustomFormatter(new DateFormatter("dd.MM.yyyy"));
     }
 
     @ModelAttribute("owner")

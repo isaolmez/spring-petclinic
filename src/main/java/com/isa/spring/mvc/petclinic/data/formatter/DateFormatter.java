@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class DateFormatter implements Formatter<Date> {
+
     private final String datePattern;
 
     public DateFormatter(String datePattern) {

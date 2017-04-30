@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class RepositoryLogger {
     private static final Logger LOG = LoggerFactory.getLogger(RepositoryLogger.class);
 
-    @Pointcut("execution(public * com.isa..data.noooo..*(..))")
+    @Pointcut("execution(public * com.isa..data..*(..))")
     private void anyPublicOperationInRepository() {
     }
 

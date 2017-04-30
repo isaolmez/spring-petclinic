@@ -83,7 +83,7 @@ public class PetControllerTest {
     public void shouldAccess_Edit_WithPost() throws Exception {
         mockMvc.perform(post("/owners/1/pets/1/edit")
                 .param("name", "test name")
-                .param("birthDate", "01-01-2000")
+                .param("birthDate", "01.01.2000")
                 .param("type", "bird"))
                 .andDo(print())
                 .andExpect(model().hasNoErrors())

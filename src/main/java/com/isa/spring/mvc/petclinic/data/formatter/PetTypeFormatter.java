@@ -3,6 +3,7 @@ package com.isa.spring.mvc.petclinic.data.formatter;
 import com.isa.spring.mvc.petclinic.data.model.PetType;
 import com.isa.spring.mvc.petclinic.data.repository.PetTypeRepository;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.Formatter;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,7 @@ public class PetTypeFormatter implements Formatter<PetType> {
 
     private final PetTypeRepository petTypeRepository;
 
+    @Autowired
     public PetTypeFormatter(PetTypeRepository petTypeRepository) {
         this.petTypeRepository = petTypeRepository;
     }

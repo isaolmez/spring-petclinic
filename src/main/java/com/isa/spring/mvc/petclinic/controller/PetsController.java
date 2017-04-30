@@ -40,11 +40,6 @@ public class PetsController {
         webDataBinder.setDisallowedFields("id");
     }
 
-    @InitBinder
-    public void setFormatters(WebDataBinder webDataBinder) {
-        webDataBinder.addCustomFormatter(new DateFormatter("dd-MM-yyyy"));
-    }
-
     @ModelAttribute("owner")
     public Owner getOwner(@PathVariable("ownerId") long ownerId) {
         return ownerService.findOne(ownerId);

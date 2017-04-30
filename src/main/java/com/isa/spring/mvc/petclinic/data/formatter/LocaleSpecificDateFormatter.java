@@ -4,6 +4,7 @@ package com.isa.spring.mvc.petclinic.data.formatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.format.Formatter;
+import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -11,7 +12,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+@Component
 public class LocaleSpecificDateFormatter implements Formatter<Date> {
+
     private final MessageSource messageSource;
 
     @Autowired

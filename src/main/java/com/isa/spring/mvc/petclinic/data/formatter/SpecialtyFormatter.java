@@ -13,6 +13,7 @@ import java.util.Locale;
 
 @Component
 public class SpecialtyFormatter implements Formatter<Specialty> {
+
     private final SpecialtyRepository specialtyRepository;
 
     @Autowired

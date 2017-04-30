@@ -26,6 +26,9 @@ public class Clinic extends NamedEntity {
     private Set<Veterinarian> veterinarians;
 
     public Address getAddress() {
+        if (address == null) {
+            address = new Address();
+        }
         return address;
     }
 
@@ -34,6 +37,10 @@ public class Clinic extends NamedEntity {
     }
 
     public ContactDetails getContact() {
+        if (contact == null) {
+            contact = new ContactDetails();
+        }
+
         return contact;
     }
 

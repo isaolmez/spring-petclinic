@@ -28,7 +28,11 @@ public class Veterinarian extends Person {
     private Set<Specialty> specialties;
 
     public Address getAddress() {
-        return address == null ? new Address() : address;
+        if(address == null){
+            address = new Address();
+        }
+
+        return address;
     }
 
     public void setAddress(Address address) {
@@ -36,7 +40,11 @@ public class Veterinarian extends Person {
     }
 
     public ContactDetails getContact() {
-        return contact == null ? new ContactDetails() : contact;
+        if(contact == null){
+            contact = new ContactDetails();
+        }
+
+        return contact;
     }
 
     public void setContact(ContactDetails contact) {
