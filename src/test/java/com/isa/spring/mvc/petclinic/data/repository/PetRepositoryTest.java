@@ -1,21 +1,23 @@
 package com.isa.spring.mvc.petclinic.data.repository;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import com.isa.spring.mvc.petclinic.common.provider.PetModelProvider;
 import com.isa.spring.mvc.petclinic.common.provider.VisitModelProvider;
 import com.isa.spring.mvc.petclinic.data.model.Owner;
 import com.isa.spring.mvc.petclinic.data.model.Pet;
 import com.isa.spring.mvc.petclinic.data.model.PetType;
 import com.isa.spring.mvc.petclinic.data.model.Visit;
+import javax.transaction.Transactional;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.transaction.Transactional;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

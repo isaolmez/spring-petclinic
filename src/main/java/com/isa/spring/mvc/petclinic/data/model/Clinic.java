@@ -1,14 +1,16 @@
 package com.isa.spring.mvc.petclinic.data.model;
 
 import com.isa.spring.mvc.petclinic.data.model.core.NamedEntity;
-import com.isa.spring.mvc.petclinic.data.model.core.TimestampedEntity;
 import com.isa.spring.mvc.petclinic.data.model.embeddable.Address;
 import com.isa.spring.mvc.petclinic.data.model.embeddable.ContactDetails;
-
-import javax.persistence.*;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "clinics")

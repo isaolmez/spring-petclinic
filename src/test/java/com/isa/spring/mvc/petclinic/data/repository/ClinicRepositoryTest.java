@@ -1,21 +1,23 @@
 package com.isa.spring.mvc.petclinic.data.repository;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import com.isa.spring.mvc.petclinic.common.provider.ClinicModelProvider;
 import com.isa.spring.mvc.petclinic.common.provider.OwnerModelProvider;
 import com.isa.spring.mvc.petclinic.common.provider.VeterinarianModelProvider;
 import com.isa.spring.mvc.petclinic.data.model.Clinic;
 import com.isa.spring.mvc.petclinic.data.model.Owner;
 import com.isa.spring.mvc.petclinic.data.model.Veterinarian;
+import javax.transaction.Transactional;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.transaction.Transactional;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -111,6 +113,8 @@ public class ClinicRepositoryTest {
         updatedClinic.getVeterinarians().forEach(vet -> vet.setFirstName(expectedVetName));
         updatedClinic.getOwners().forEach(owner -> owner.setFirstName(expectedOwnerName));
 
+        // Flushes here or alternatively
+        // clinicRepository.save(clinic);
         Clinic actualClinic = clinicRepository.findOne(updatedClinic.getId());
 
         assertEquals(expectedClinicName, actualClinic.getName());

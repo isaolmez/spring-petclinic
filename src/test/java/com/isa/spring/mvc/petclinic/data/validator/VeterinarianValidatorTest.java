@@ -1,16 +1,15 @@
 package com.isa.spring.mvc.petclinic.data.validator;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.isa.spring.mvc.petclinic.data.model.Veterinarian;
+import java.util.Set;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
-import java.util.Set;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 public class VeterinarianValidatorTest {

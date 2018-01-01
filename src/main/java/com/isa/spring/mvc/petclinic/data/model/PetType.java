@@ -1,14 +1,10 @@
 package com.isa.spring.mvc.petclinic.data.model;
 
 import com.isa.spring.mvc.petclinic.data.model.core.NamedEntity;
-import com.isa.spring.mvc.petclinic.data.model.core.TimestampedEntity;
-
-import javax.persistence.Column;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "types")

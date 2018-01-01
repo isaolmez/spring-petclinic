@@ -1,17 +1,16 @@
 package com.isa.spring.mvc.petclinic.data.formatter;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.text.ParseException;
-import java.util.Calendar;
-import java.util.Date;
-
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
 
 @RunWith(SpringRunner.class)
 public class DateFormatterTest {

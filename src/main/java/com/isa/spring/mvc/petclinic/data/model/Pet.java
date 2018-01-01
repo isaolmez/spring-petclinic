@@ -1,15 +1,18 @@
 package com.isa.spring.mvc.petclinic.data.model;
 
 import com.isa.spring.mvc.petclinic.data.model.core.NamedEntity;
-import com.isa.spring.mvc.petclinic.data.model.core.TimestampedEntity;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.validation.annotation.Validated;
-
-import javax.persistence.*;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "pets")

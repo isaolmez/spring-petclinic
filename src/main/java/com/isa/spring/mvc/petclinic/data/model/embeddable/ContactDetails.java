@@ -7,13 +7,14 @@ import javax.validation.constraints.Digits;
 @Embeddable
 public class ContactDetails {
     @Column
+    @Digits(fraction = 0, integer = 10)
     private String telephone;
 
     @Column
+    @Digits(fraction = 0, integer = 10)
     private String mobilePhone;
 
     @Column
-    @Digits(fraction = 0, integer = 10)
     private String emailAddress;
 
     public String getTelephone() {

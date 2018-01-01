@@ -3,11 +3,9 @@ package com.isa.spring.mvc.petclinic.service.impl;
 import com.isa.spring.mvc.petclinic.data.model.Owner;
 import com.isa.spring.mvc.petclinic.data.repository.OwnerRepository;
 import com.isa.spring.mvc.petclinic.service.OwnerService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 public class OwnerServiceImpl implements OwnerService {

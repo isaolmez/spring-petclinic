@@ -1,7 +1,6 @@
 package com.isa.spring.mvc.petclinic.common.provider;
 
 import com.isa.spring.mvc.petclinic.data.model.PetType;
-
 import java.util.UUID;
 
 public class PetTypeModelProvider implements TestModelProvider<PetType> {

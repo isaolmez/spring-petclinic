@@ -1,22 +1,23 @@
 package com.isa.spring.mvc.petclinic.data.repository;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import com.isa.spring.mvc.petclinic.common.provider.OwnerModelProvider;
 import com.isa.spring.mvc.petclinic.common.provider.PetModelProvider;
-import com.isa.spring.mvc.petclinic.common.provider.PetTypeModelProvider;
 import com.isa.spring.mvc.petclinic.data.model.Clinic;
 import com.isa.spring.mvc.petclinic.data.model.Owner;
 import com.isa.spring.mvc.petclinic.data.model.Pet;
 import com.isa.spring.mvc.petclinic.data.model.PetType;
+import javax.transaction.Transactional;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.transaction.Transactional;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -64,6 +65,10 @@ public class OwnerRepositoryTest {
     public void shouldInsert_ThroughCascade() {
         final long initialCount = ownerRepository.count();
 
+        /**
+         * If insert cascade is enabled, flush operation traverses relations and persists them,
+         * without explicit persist on individual unmanaged entities.
+         */
         clinic.addOwner(owner);
         ownerRepository.flush();
         final long actualCount = ownerRepository.count();
@@ -103,7 +108,6 @@ public class OwnerRepositoryTest {
         final long initialCount = ownerRepository.count();
 
         ownerRepository.delete(saved);
-        ownerRepository.flush();
         final long actualCount = ownerRepository.count();
 
         assertEquals(initialCount - 1, actualCount);
@@ -112,6 +116,7 @@ public class OwnerRepositoryTest {
     @Test
     public void shouldNotDelete_WhenEntityIsInParentCollection() {
         this.clinic.addOwner(owner);
+        // Flushes here and inserts owner, since clinic is in persistence context
         final long initialCount = ownerRepository.count();
 
         ownerRepository.delete(owner.getId());
@@ -123,9 +128,12 @@ public class OwnerRepositoryTest {
     @Test
     public void shouldDelete_ThroughOrphanRemoval() {
         this.clinic.addOwner(owner);
+        // Flushes here and inserts owner, since clinic is in persistence context
+        // Constrast this with ClinicRepositoryTest.shouldDeleteOrphans()
         final long initialCount = ownerRepository.count();
 
         this.clinic.removeOwner(owner);
+        // Flushes here and inserts owner, since clinic is in persistence context
         final long actualCount = ownerRepository.count();
 
         assertEquals(initialCount - 1, actualCount);
@@ -185,6 +193,7 @@ public class OwnerRepositoryTest {
         owner.addPet(initialPet);
         Owner saved = ownerRepository.save(owner);
 
+        // Just make the relation entity orphan, do not delete the parent entity
         saved.removePet(initialPet);
         ownerRepository.flush();
 

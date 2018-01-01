@@ -2,7 +2,6 @@ package com.isa.spring.mvc.petclinic.common.provider;
 
 
 import com.isa.spring.mvc.petclinic.data.model.embeddable.Address;
-
 import java.util.UUID;
 
 public class AddressModelProvider implements TestModelProvider<Address> {

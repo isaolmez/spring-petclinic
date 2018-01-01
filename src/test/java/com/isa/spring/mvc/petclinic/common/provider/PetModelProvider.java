@@ -1,7 +1,6 @@
 package com.isa.spring.mvc.petclinic.common.provider;
 
 import com.isa.spring.mvc.petclinic.data.model.Pet;
-
 import java.util.Date;
 import java.util.UUID;
 
